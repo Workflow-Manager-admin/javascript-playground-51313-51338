@@ -3,24 +3,124 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --primary: #0D1117;
+  --secondary: #161B22;
+  --accent: #F7B731;
+  --editor-bg: #ffffff;
+  --output-bg: #f8f9fa;
+  --border: #e1e4e8;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
+[data-theme="dark"] {
+  --background: #0D1117;
+  --foreground: #ededed;
+  --primary: #ffffff;
+  --secondary: #21262d;
+  --accent: #F7B731;
+  --editor-bg: #161B22;
+  --output-bg: #0d1117;
+  --border: #30363d;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #0D1117;
     --foreground: #ededed;
+    --primary: #ffffff;
+    --secondary: #21262d;
+    --accent: #F7B731;
+    --editor-bg: #161B22;
+    --output-bg: #0d1117;
+    --border: #30363d;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.monaco-editor {
+  background-color: var(--editor-bg) !important;
+}
+
+.output-panel {
+  background-color: var(--output-bg);
+  border-left: 1px solid var(--border);
+}
+
+.error-message {
+  color: #ff6b6b;
+  background-color: rgba(255, 107, 107, 0.1);
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  border-radius: 4px;
+  padding: 8px 12px;
+  margin: 8px 0;
+  font-family: var(--font-mono);
+  font-size: 14px;
+}
+
+.console-output {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.console-log {
+  margin: 4px 0;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.console-log.log {
+  color: var(--foreground);
+}
+
+.console-log.error {
+  color: #ff6b6b;
+  background-color: rgba(255, 107, 107, 0.1);
+}
+
+.console-log.warn {
+  color: #f39c12;
+  background-color: rgba(243, 156, 18, 0.1);
+}
+
+.console-log.info {
+  color: #3498db;
+  background-color: rgba(52, 152, 219, 0.1);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--secondary);
 }

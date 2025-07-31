@@ -1,36 +1,131 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# JavaScript Playground
+
+A modern, web-based playground for writing, running, and sharing JavaScript code snippets with live preview capabilities.
+
+## Features
+
+✨ **Core Features**
+- **JavaScript Code Editor** with syntax highlighting powered by Monaco Editor
+- **Live Preview/Output Panel** with real-time code execution
+- **Code Snippet Saving and Sharing** with local storage and URL sharing
+- **Responsive Design** that works on desktop and mobile devices
+- **Error Handling and Display** with detailed error messages
+- **Theme Selector** with light/dark mode support
+
+🎨 **Design**
+- Modern, minimalistic interface
+- Split-screen layout with editor on the left, output on the right
+- Header with navigation and theme switcher
+- Custom color palette with accent color #F7B731
 
 ## Getting Started
 
-First, run the development server:
+### Installation
+
+```bash
+npm install
+```
+
+### Development
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the application.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Building for Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+```
 
-## Learn More
+### Linting
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run lint
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Usage
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Writing Code
+- Write JavaScript code in the left panel editor
+- Code is automatically executed with a 1-second debounce
+- Use `console.log()`, `console.error()`, `console.warn()`, and `console.info()` for output
 
-## Deploy on Vercel
+### Keyboard Shortcuts
+- **Ctrl+Enter** (or Cmd+Enter on Mac): Run code immediately
+- **Ctrl+S** (or Cmd+S on Mac): Open snippet manager
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Saving Snippets
+- Click the "Save" button or use Ctrl+S to open the snippet manager
+- Give your snippet a name and save it locally
+- Load saved snippets anytime from the snippet manager
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Sharing Code
+- Click the "Share" button to generate a shareable URL
+- The URL contains your code encoded in the query parameters
+- Anyone with the URL can view and run your code
+
+### Theme Switching
+- Click the sun/moon icon in the header to toggle between light and dark themes
+- Theme preference is saved locally
+
+### Import/Export
+- **Import**: Click the upload icon to import JavaScript files
+- **Export**: Click the download icon to export your current code as a .js file
+
+## Technical Details
+
+### Built With
+- **Next.js 15** - React framework
+- **TypeScript** - Type safety
+- **Tailwind CSS** - Styling
+- **Monaco Editor** - Code editor (same as VS Code)
+- **Lucide React** - Icons
+- **UUID** - Unique identifiers for snippets
+
+### Architecture
+- **Client-side only** - No backend required
+- **Local storage** - Snippets and preferences saved locally
+- **URL sharing** - Code shared via base64 encoded URLs
+- **Responsive design** - Works on all screen sizes
+
+### Security
+- Code execution is sandboxed within the browser
+- No server-side execution
+- No external API calls for code execution
+
+## Development
+
+The project structure follows Next.js 13+ app directory conventions:
+
+```
+src/
+├── app/
+│   ├── globals.css          # Global styles and theme variables
+│   ├── layout.tsx           # Root layout
+│   └── page.tsx             # Main playground component
+├── components/
+│   ├── CodeEditor.tsx       # Monaco editor wrapper
+│   ├── Header.tsx           # Header with controls
+│   ├── OutputPanel.tsx      # Output display
+│   ├── SharedCodeHandler.tsx # URL parameter handler
+│   └── SnippetManager.tsx   # Snippet save/load modal
+└── hooks/
+    ├── useTheme.ts          # Theme management
+    └── useLocalStorage.ts   # Local storage utilities
+```
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Run tests: `npm run lint`
+5. Build: `npm run build`
+6. Submit a pull request
+
+## License
+
+This project is open source and available under the MIT License.
